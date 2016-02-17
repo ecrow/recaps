@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{%load static from staticfiles%}
+
+{%block morecss %}
+	<link rel="stylesheet" href="{% static 'css/kendo.common.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/kendo.office365.min.css' %}">
+{% endblock %}
+{%block nav_up%}
+	{%include "nav_up.html"%}
+{%endblock%}
+{%block content %}
+	<main class="cd-main-content">
+		{%include "nav_left.html"%}
+		<div class="content-wrapper">
+			{%if error%}
+				<div class="errorPanel">
+					<h1>Error</h1>
+					<h3>Server internal error</h3>
+					<h4>Descripción del error: {{error}}</h4>
+				</div>
+			{%endif%}
+			<hr/>
+		</div> <!-- .content-wrapper -->
+	</main> 
+{%endblock%}
+{% block jsScripts%}
+<script src="{% static 'js/kendo.all.min.js' %}"></script>
+{%endblock%}

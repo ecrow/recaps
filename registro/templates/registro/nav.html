@@ -1,0 +1,22 @@
+<ul class="nav nav-tabs tabs-left">
+    {% url 'domicilio_paciente' paciente.id as home_url %}
+    <li {% if request.get_full_path == home_url %}class="active"{% endif %}>
+        <a href="{%url 'domicilio_paciente' paciente.id %}" >Domicilio</a>
+    </li>
+    {% url 'obstetrico_paciente' paciente.id as home_url %}
+    <li {% if request.get_full_path == home_url %}class="active"{% endif %}>
+        <a href="{%url 'obstetrico_paciente' paciente.id %}"> Datos obstétricos </a>
+    </li>
+    {% url 'referencias_paciente' paciente.id as home_url %}
+    <li {% if request.get_full_path == home_url %}class="active"{% endif %}>
+        <a href="{%url 'referencias_paciente' paciente.id %}" >Referencias</a>
+    </li>
+    {% url 'tamizajes_paciente' paciente.id as home_url %}
+    <li {% if request.get_full_path == home_url %}class="active"{% endif %}>
+        <a href="{% url 'tamizajes_paciente' paciente.id%}"> Tamizajes </a>
+    </li>
+    {% url 'contrareferencias_paciente' paciente.id as home_url %}
+    <li {% if request.get_full_path == home_url %}class="active"{% endif %}>
+        <a href="{% url 'contrareferencias_paciente' paciente.id%}" >Contrareferencias </a>
+    </li>
+</ul>

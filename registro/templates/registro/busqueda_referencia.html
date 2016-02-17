@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+{%load static from staticfiles%}
+
+{%block morecss %}
+	<link rel="stylesheet" href="{% static 'css/kendo.common.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/kendo.office365.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/busqueda.css' %}">
+{% endblock %}
+{%block nav_up%}
+	{%include "nav_up.html"%}
+{%endblock%}
+{%block content %}
+	<main class="cd-main-content">
+		{%include "nav_left.html"%}
+		<div class="content-wrapper">
+			{% include 'registro/forms/form_busqueda_referencia.html'%}
+			{% include 'registro/resultado_busqueda_grid.html'%}
+		</div> <!-- .content-wrapper -->
+	</main> 
+{%endblock%}
+{% block jsScripts%}
+<script src="{% static 'js/kendo.all.min.js' %}"></script>
+<script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+<script src="{% static 'js/busqueda_referencia.js' %}"></script>
+{%endblock%}

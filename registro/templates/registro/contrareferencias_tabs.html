@@ -1,0 +1,27 @@
+<section>
+  <div class="tabs tabs-style-iconbox">
+    <nav>
+      <ul>
+        <li class="active"><a href="#listado" data-toggle="tab"><i class="fa fa-bars"></i><span> Contrareferencias</span></a></li>
+
+        <li>
+          <a href="#referencias"  data-toggle="tab">
+          <i class="fa fa-floppy-o"></i><span> Agregar contrareferencia</span></a>
+        </li>
+
+      </ul>
+    </nav>
+    <div class="content-wrap tab-content">
+      <section id="listado" class="tab-pane active">
+       {%if contrareferencias %}
+          {%include "registro/listado_contrareferencias.html"%} 
+       {%else%}
+          {%include "registro/msg_vacio.html"%} 
+       {%endif%}
+      </section>
+      <section id="referencias" class="tab-pane ">
+       {%include "registro/forms/form_contrareferencia.html"%}
+      </section>
+    </div><!-- /content -->
+  </div><!-- /tabs -->
+</section>

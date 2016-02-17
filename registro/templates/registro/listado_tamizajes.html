@@ -1,0 +1,45 @@
+{%for tamizaje in tamizajes%}
+<div class="titulo_elemento" id="titulo_elemento_{{tamizaje.id}}">
+		<a data-toggle="collapse" href="#elemento_{{tamizaje.id}}">
+			{{tamizaje.fecha_consulta|date:"d-M-Y"}}
+		</a>
+		<span class="acciones">
+			<a id="borra_{{tamizaje.id}}" href="#" data-menu="delete" data-undo="#undo_{{tamizaje.id}}" data-confirma="#confirma_{{tamizaje.id}}" data-titulo="#titulo_elemento_{{tamizaje.id}}"><i class="fa fa-trash"></i></a>
+			<a id="confirma_{{tamizaje.id}}" href="#" data-id="{{tamizaje.id}}" data-menu="confirm" class="hidden"><i class="fa fa-check"></i></a>
+			<a id="undo_{{tamizaje.id}}" href="#" data-confirma="#confirma_{{tamizaje.id}}" data-titulo="#titulo_elemento_{{tamizaje.id}}" data-borra="#borra_{{tamizaje.id}}" data-menu="undo" class="hidden"><i class="fa fa-undo"></i></a>
+		</span>
+<div class="elemento collapse" id="elemento_{{tamizaje.id}}">
+<div class="row">
+	<div class="col-md-4">
+		<h2 class="textoField">{{tamizaje.fecha_consulta|date:"d-M-Y"}}</h2>
+		<h3 class="etiqueta">Fecha de Consulta</h3>
+	</div>
+	{% if tamizaje.sg_fecha_consulta%}
+	<div class="col-md-4">
+		<h2 class="textoField">{{tamizaje.sg_fecha_consulta}}</h2>
+		<h3 class="etiqueta">Semanas de gestación</h3>
+	</div>
+	{%endif%}
+	<div class="col-md-4">
+		<h2 class="textoField">{{tamizaje.unidad_realiza}}</h2>
+		<h3 class="etiqueta">Unidad</h3>
+	</div>
+	
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<h2 class="textoField">{{tamizaje.tipo_tamizaje}}</h2>
+		<h3 class="etiqueta">Tamizaje</h3>
+	</div>
+	<div class="col-md-4">
+		<h2 class="textoField">{{tamizaje.resultado}}</h2>
+		<h3 class="etiqueta">Resultado</h3>
+	</div>
+	<div class="col-md-4">
+		<h2 class="textoField">{{tamizaje.tipo_tratamiento}}</h2>
+		<h3 class="etiqueta"> Tratamiento</h3>
+	</div>	
+</div>
+</div>
+</div>
+{%endfor%}

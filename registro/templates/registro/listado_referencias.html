@@ -1,0 +1,38 @@
+{%for referencia in referencias%}
+<div class="titulo_elemento" id="titulo_elemento_{{referencia.id}}">
+		<a data-toggle="collapse" href="#elemento_{{referencia.id}}">
+			{{referencia.fecha_envio|date:"d-M-Y"}}
+		</a>
+		<span class="acciones">
+			<a id="borra_{{referencia.id}}" href="#" data-menu="delete" data-undo="#undo_{{referencia.id}}" data-confirma="#confirma_{{referencia.id}}" data-titulo="#titulo_elemento_{{referencia.id}}"><i class="fa fa-trash"></i></a>
+			<a id="confirma_{{referencia.id}}" href="#" data-id="{{referencia.id}}" data-menu="confirm" class="hidden"><i class="fa fa-check"></i></a>
+			<a id="undo_{{referencia.id}}" href="#" data-confirma="#confirma_{{referencia.id}}" data-titulo="#titulo_elemento_{{referencia.id}}" data-borra="#borra_{{referencia.id}}" data-menu="undo" class="hidden"><i class="fa fa-undo"></i></a>
+		</span>
+<div class="elemento collapse" id="elemento_{{referencia.id}}">
+	<div class="row">
+		<div class="col-md-4">
+			<h2 class="textoField">{{referencia.fecha_envio|date:"d-M-Y"}}</h2>
+			<h3 class="etiqueta">Fecha de Envio</h3>
+		</div>
+		<div class="col-md-4">
+			<h2 class="textoField">{{referencia.unidad_refiere}}</h2>
+			<h3 class="etiqueta">Unidad que envia</h3>
+		</div>
+		<div class="col-md-4">
+			<h2 class="textoField">{{referencia.unidad_recibe}}</h2>
+			<h3 class="etiqueta">Unidad que recibe</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<h2 class="textoField">{{referencia.tipo_referencia}}</h2>
+			<h3 class="etiqueta">Motivo</h3>
+		</div>
+		<div class="col-md-5">
+			<h2 class="textoField">{{referencia.observaciones}}</h2>
+			<h3 class="etiqueta">Observaciones</h3>
+		</div>
+	</div>
+</div>
+</div>
+{%endfor%}

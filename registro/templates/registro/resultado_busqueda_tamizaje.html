@@ -1,0 +1,24 @@
+<h3 class="tituloDescripcion">Resultados de la búsqueda</h3>
+<hr/>
+<div class="c-content-panel">
+  <table class="table table-responsive table-striped">    
+    <thead>
+      <tr>
+        <th>Fecha de consulta</th>
+        <th>Tipo de tamizaje</th>
+        <th>Resultado</th>
+        <th>Tratamiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tamizaje in tamizajes%}
+        <tr>
+          <td>{{tamizaje.fecha_consulta|date:"D d M Y"}}</a></td>
+          <td> {{tamizaje.tipo_tamizaje}}</td>
+          <td> {{tamizaje.resultado}}</td>
+          <td>{{tamizaje.tipo_tratamiento}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

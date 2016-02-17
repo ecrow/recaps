@@ -1,0 +1,28 @@
+<header class="cd-main-header">
+	<a href="/" class="cd-logo">RECAPS</a>
+	<div class="cd-search is-hidden">
+		<form action="/registro/busqueda/paciente/" method="GET">
+			<input type="text" name="busqueda_paciente" id="busqueda_paciente" placeholder="Busca pacientes...">
+		</form>
+	</div> <!-- cd-search -->
+
+	<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+	<nav class="cd-nav">
+		<ul class="cd-top-nav">
+			<li class="has-children account">
+				<a href="#0">
+					<i class="fa fa-user"></i>
+					{% if user.is_authenticated %}
+                  		{{user.get_full_name}} 
+            		{% endif %}
+				</a>
+				<ul>
+					{% if user.is_staff %}
+						<li><a href="/admin"><i class="fa fa-cogs"></i> Administración</a></li>
+					{% endif %}
+					<li><a href="/logout_login"><i class="fa fa-lock"></i> Cerrar sesión</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</header> <!-- .cd-main-header -->

@@ -1,0 +1,28 @@
+<div class="row ">
+		<div class="col-md-3">
+			<h2 class="textoField">{{domicilio.localidad.municipio.estado.descripcion}}</h2>
+			<h3 class="etiqueta">Estado</h3>
+		</div>
+		<div class="col-md-3">
+			<h2 class="textoField">{{domicilio.localidad.municipio.descripcion}}</h2>
+			<h3 class="etiqueta">Municipio</h3>
+		</div>
+		
+		<div class="col-md-6">
+			<h2 class="textoField">{{domicilio.localidad.descripcion}}</h2>
+			<h3 class="etiqueta">Localidad</h3>
+		</div>	
+</div>
+<hr/>
+<div class="row">
+		<div class="col-md-8">
+			<h2 class="textoField">{{domicilio.domicilio|default:"NE"}}</h2>
+			<h3 class="etiqueta">Domicilio</h3>
+		</div>
+		<div class="col-md-4">
+			<h2 class="textoField">{{domicilio.telefono|default:"NE"}}</h2>
+			<h3 class="etiqueta">Teléfono</h3>
+		</div>
+</div>
+<hr/>
+

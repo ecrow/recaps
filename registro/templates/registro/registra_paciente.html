@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+{%load static from staticfiles%}
+{%block morecss %}
+	<link rel="stylesheet" href="{% static 'css/kendo.common.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/kendo.office365.min.css' %}">
+{% endblock %}
+{%block nav_up%}
+	{%include "nav_up.html"%}
+{%endblock%}
+{%block content %}
+	<main class="cd-main-content">
+		{%include "nav_left.html"%}
+		<div class="content-wrapper">
+			{%include "registro/forms/form_paciente.html"%}
+			{%if error%}
+				<div class="error-form-message">
+					<p><i class="fa fa-exclamation-circle"></i> {{error}}</p>
+				</div>
+			{%endif%}
+		</div> <!-- .content-wrapper -->
+	</main> 
+{%endblock%}
+{% block jsScripts%}
+<script src="{% static 'js/kendo.all.min.js' %}"></script>
+<script src="{% static 'js/paciente.js' %}"></script>
+{%endblock%}

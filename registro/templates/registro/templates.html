@@ -1,0 +1,74 @@
+<script id="templateTamizaje" type="text/x-kendo-template">
+    <tr data-uid="#= uid #">
+        <td><a href="#: url #">#:kendo.toString(fecha_consulta, 'dd/MM/yyyy')#</a></td>
+        <td>#: tipo_tamizaje #</td>
+        <td>#: resultado #</td>
+        <td>#: tipo_tratamiento #</td>
+        <td>#: unidad_realiza #</td>
+        <td>#: edad_paciente #</td>
+    </tr>
+</script>
+<script id="alttemplateTamizaje" type="text/x-kendo-template">
+    <tr class="k-alt" data-uid="#= uid #">
+        <td><a href="#: url #">#:kendo.toString(fecha_consulta, 'dd/MM/yyyy')#</a></td>
+        <td>#: tipo_tamizaje #</td>
+        <td>#: resultado #</td>
+        <td>#: tipo_tratamiento #</td>
+        <td>#: unidad_realiza #</td>
+        <td>#: edad_paciente #</td>
+    </tr>
+</script>
+
+<script id="templateReferencia" type="text/x-kendo-template">
+    <tr data-uid="#= uid #">
+        <td><a href="#: url #"> #:kendo.toString(fecha_envio, 'dd/MM/yyyy')#</a></td>
+        <td>#: unidad_refiere #</td>
+        <td>#: unidad_recibe #</td>
+        <td>#: tipo_tamizaje #</td>
+        <td>#: observaciones #</td>
+    </tr>
+</script>
+<script id="alttemplateReferencia" type="text/x-kendo-template">
+    <tr class="k-alt" data-uid="#= uid #">
+        <td><a href="#: url #"> #:kendo.toString(fecha_envio, 'dd/MM/yyyy')#</a></td>
+        <td>#: unidad_refiere #</td>
+        <td>#: unidad_recibe #</td>
+        <td>#: tipo_tamizaje #</td>
+        <td>#: observaciones #</td>
+    </tr>
+</script>
+
+<script id="templateContraReferencia" type="text/x-kendo-template">
+    <tr data-uid="#= uid #">
+        <td><a href="#: url #"> #:kendo.toString(fecha_envio, 'dd/MM/yyyy')#</a></td>
+        <td>#: unidad_contrarefiere #</td>
+        <td>#: unidad_recibe #</td>
+        <td>#: observaciones #</td>
+    </tr>
+</script>
+<script id="alttemplateContraReferencia" type="text/x-kendo-template">
+    <tr class="k-alt" data-uid="#= uid #">
+        <td><a href="#: url #"> #:kendo.toString(fecha_envio, 'dd/MM/yyyy')#</a></td>
+        <td>#: unidad_contrarefiere #</td>
+        <td>#: unidad_recibe #</td>
+        <td>#: observaciones #</td>
+    </tr>
+</script>
+
+<script id="templateGeneral" type="text/x-kendo-template">
+    <tr data-uid="#= uid #">
+        <td><a href="#: url #"> #: nombre #</a></td>
+        <td>#: domicilio #</td>
+        <td>#: edad_paciente #</td>
+        <td>#: unidad_paciente #</td>
+    </tr>
+</script>
+<script id="alttemplateGeneral" type="text/x-kendo-template">
+    <tr class="k-alt" data-uid="#= uid #">
+        <td><a href="#: url #"> #: nombre #</a></td>
+        <td>#: domicilio #</td>
+        <td>#: edad_paciente #</td>
+        <td>#: unidad_paciente #</td>
+    </tr>
+</script>
+

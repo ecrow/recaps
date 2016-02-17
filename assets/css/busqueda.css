@@ -1,0 +1,27 @@
+.c-content-panel {
+
+    
+}
+.c-content-panel li{
+    border-bottom: 1px solid #f1f1f1;    
+}
+
+
+.c-content-panel h2.textoBusqueda {
+    font-size: 1.8rem;
+    margin:5px 0;
+}
+
+.c-content-panel h3.etiquetaBusqueda {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #857198;
+    letter-spacing: .1em;
+    margin: 5px 0;
+}
+
+.c-content-panel a {
+    color: #1784c7;
+}
+

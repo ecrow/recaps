@@ -1,0 +1,36 @@
+<form action="" id="domicilio_paciente" method='post'>{% csrf_token %}
+<fieldset>
+
+<div class="row ">
+	<div class="col-md-3">
+		<label class="cd-label"  for="festado">Estado</label>
+		<input class="ancho100" type="text" name="festado" id="festado" validationMessage="Dato obligatorio" required>
+	</div>
+	<div class="col-md-4">
+		<label class="cd-label" for="fmunicipio">Municipio</label>
+		<input class="ancho100" type="text" name="fmunicipio" id="fmunicipio" validationMessage="Dato obligatorio" required>
+	</div>
+	<div class="col-md-5">
+		<label class="cd-label" for="flocalidad">Localidad</label>
+		<input class="ancho100" type="text" name="flocalidad" id="flocalidad" validationMessage="Dato obligatorio" required>
+	</div>
+</div>
+<hr/>
+
+<div class="row">
+	<div class="col-md-9">
+		<label class="cd-label"  for="fdomicilio">Domicilio</label>
+		<input class="ancho100" type="text" name="fdomicilio" id="fdomicilio">
+	</div>
+	<div class="col-md-3">
+		<label class="cd-label" for="ftelefono">Teléfono</label>
+		<input class="ancho100" type="text" name="ftelefono" id="ftelefono" >
+	</div>
+</div>
+<hr />
+<div class="cd-box">
+	<button type="submit" class="btn btn-info" name="submit_domicilio"> <i class="fa fa-floppy-o"></i> Guardar</button>
+	<button class="btn btn-danger" ><i class="fa fa-times"></i> Cancelar</button>
+</div>
+</fieldset>
+</form>

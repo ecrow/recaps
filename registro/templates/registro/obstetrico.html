@@ -1,0 +1,43 @@
+{% load registro_extras %}
+
+<div class="row">
+	<div class="col-md-5">
+		<h2 class="textoField">{{obstetrico.fum|date:"d-m-Y"}}</h2>
+		<h3 class="etiqueta">Fecha de útima menstruación</h3>
+	</div>
+	<div class="col-md-5">
+		<h2 class="textoField">{{obstetrico.fum|fpp|date:"d-m-Y"}}</h2>
+		<h3 class="etiqueta">Fecha probable de parto</h3>
+	</div>
+	
+	
+		
+</div>
+<hr/>
+<div class="row ">
+	<div class="col-md-4">
+		<h2 class="textoField">{{obstetrico.fum|sg}}</h2>
+		<h3 class="etiqueta">Semanas de gestación</h3>
+	</div>
+	<div class="col-md-3">
+		<h2 class="textoField">
+			{% if obstetrico.ultrasonido %}
+			Si
+			{%else%}
+			No
+			{%endif%}
+		</h2>
+		<h3 class="etiqueta">Por ultrasonido</h3>
+	</div>
+	<div class="col-md-3">
+		<h2 class="textoField">{{obstetrico.gesta}}</h2>
+		<h3 class="etiqueta">Número de gesta</h3>
+	</div>
+</div>
+<hr/>
+<div class="row">
+	<div class="col-md-7">
+		<h2 class="textoField">{{obstetrico.factores_riesgo|default:"NO ESPECIFICADO" }}</h2>
+		<h3 class="etiqueta">Factores de riesgo</h3>
+	</div>
+</div>

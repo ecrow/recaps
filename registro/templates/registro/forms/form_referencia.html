@@ -1,0 +1,39 @@
+<form action="" id="referencia_paciente" method='post'>{% csrf_token %}
+<fieldset>
+
+<div class="row ">
+	<div class="col-md-4">
+		<label class="cd-label"  for="ftipo_tamizaje">Tipo de tamizaje</label>
+		<input class="ancho100" type="text" name="ftipo_tamizaje" id="ftipo_tamizaje" validationMessage="Dato obligatorio" required>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<label class="cd-label" for="funidad_refiere">Unidad que refiere</label>
+		<input class="ancho100" type="text" name="funidad_refiere" id="funidad_refiere" validationMessage="Dato obligatorio" required>
+	</div>
+	<div class="col-md-4">
+		<label class="cd-label" for="funidad_recibe">Unidad que recibe</label>
+		<input class="ancho100" type="text" name="funidad_recibe" id="funidad_recibe" validationMessage="Dato obligatorio" required>
+	</div>
+	<div class="col-md-4">
+		<label class="cd-label" for="ffecha_envio">Fecha de envio</label>
+		<input class="ancho100" type="text" name="ffecha_envio" id="ffecha_envio" validationMessage="Dato obligatorio" required>
+	</div>
+</div>
+<hr/>
+
+<div class="row">
+	<div class="col-md-8">
+		<label class="cd-label"  for="fobservaciones">Observaciones</label>
+		<textarea class="form-control" cols="50" id="fobservaciones" name="fobservaciones" placeholder="Observaciones" rows="6"></textarea>
+	</div>
+	
+</div>
+<hr />
+<div class="cd-box">
+	<button type="submit" class="btn btn-info" name="submit_referencia"> <i class="fa fa-floppy-o"></i> Guardar</button>
+	<button class="btn btn-danger" ><i class="fa fa-times"></i> Cancelar</button>
+</div>
+</fieldset>
+</form>

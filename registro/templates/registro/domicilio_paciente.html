@@ -1,0 +1,50 @@
+{% extends "base.html"%}
+{%load static from staticfiles%}
+
+{%block morecss %}
+	<link rel="stylesheet" href="{% static 'css/kendo.common.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/kendo.office365.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/tabs.css' %}">
+{% endblock %}
+{%block nav_up%}
+	{%include "nav_up.html"%}
+{%endblock%}
+{%block content %}
+	<main class="cd-main-content">
+	{%if paciente%}
+		{%include "nav_left.html"%}
+		<div class="content-wrapper">
+				{%include "registro/datos_paciente.html"%}
+				<hr/>
+				<div class="c-body">
+    			<div class="c-content-tab-1">
+        			<div class="row">
+            			<div class="col-md-3 col-sm-12 col-xs-12">
+            				{%include "registro/nav.html"%}
+            			</div>
+            			<div class="col-md-9 col-sm-12 col-xs-12">
+                			<div class="content-list">
+                        			{% if domicilio %}
+                            			{%include "registro/domicilio.html"%}
+                        			{% else %}
+                        				{%include "registro/forms/form_domicilio.html"%}
+                        			{% endif %}
+                			</div>
+            			</div>
+        			</div>
+    			</div>
+				</div>					
+			{%endif%}
+			{%if error%}
+				<div class="error-form-message">
+					<p><i class="fa fa-exclamation-circle"></i> {{error}}</p>
+				</div>
+			
+		</div> <!-- .content-wrapper -->
+	{%endif%}
+	</main> 
+{%endblock%}
+{% block jsScripts%}
+<script src="{% static 'js/kendo.all.min.js' %}"></script>
+<script src="{% static 'js/domicilio.js' %}"></script>
+{%endblock%}

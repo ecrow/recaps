@@ -1,0 +1,45 @@
+<nav class="cd-side-nav is-fixed">
+	<ul>
+		<li class="cd-label">Registro</li>
+		<li class="has-children notifications ">
+			<a href="#0"><i class="fa fa-female"></i> Registro</a>
+			<ul>
+				<li><a href="{% url 'registra_paciente' %}"><i class="fa fa-plus"></i> Pacientes</a></li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li class="cd-label">Consulta</li>
+		<li class="has-children ">
+			<a href="#0"><i class="fa fa-search"></i> Consulta</a>
+			<ul>
+				<li><a href="{% url 'busqueda_general_pacientes'%}">Pacientes</a></li>
+				<li><a href="{% url 'busqueda_tamizaje'%}">Tamizajes</a></li>
+				<li><a href="{% url 'busqueda_referencia'%}">Referencias</a></li>
+				<li><a href="{% url 'busqueda_contrareferencia'%}">Contrareferencias</a></li>
+			</ul>
+		</li>
+	</ul>
+	{% if user.is_superuser or user.is_staff %}
+	<ul>
+		<li class="cd-label">Administración</li>
+		<li class="has-children ">
+			<a href="#0"><i class="fa fa-users"></i> Usuarios</a>
+
+			<ul>
+				<li><a href="#"><i class="fa fa-users"></i> Todos los usuarios</a></li>
+				<li><a href="#"><i class="fa fa-user-plus"></i> Agregar usuario</a></li>
+			</ul>
+		</li>
+		<li class="has-children">
+			<a href="#0"><i class="fa fa-list-alt"></i> Catálogos</a>
+			<ul>
+				<li><a href="#"><i class="fa fa-list-ol"></i> Tratamientos</a></li>
+				<li><a href="#"><i class="fa fa-list-ol"></i> Tamizajes</a></li>
+				<li><a href="#"><i class="fa fa-list-ol"></i> Unidades</a></li>
+			</ul>
+		</li>
+	</ul>
+	{% endif %}
+	
+</nav>

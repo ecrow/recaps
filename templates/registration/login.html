@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title%}Inicio de Sesión{%endblock%}
+
+{%block content%}
+<header class="cd-main-header">
+	<h1>RECAPS</h1>
+</header> <!-- .cd-main-header -->
+<main class="cd-main-content">
+	<form method="post" action="." class="cd-form floating-labels">
+	{% csrf_token %}
+	<fieldset>
+		<legend class="login">Inicio de sesión</legend>
+
+		<div class="icon">
+		{% if next %}
+			{% if user.is_authenticated %}
+				<p>Tu cuenta no cuenta con acceso a esta página</p>
+			{% endif %}
+		{% endif %}
+		</div>
+		<div class="icon">
+			<label class="cd-label" for="cd-name">Usuario</label>
+			{{ form.username }}
+	    </div> 
+
+	    <div class="icon">
+	    	<label class="cd-label" for="cd-password">Contraseña</label>
+			{{ form.password }}
+	    </div>
+	    {% if form.errors %}
+	    <div class="error-message">
+			<p>Su usuario y contraseña son erroneos. Por favor intente de nuevo</p>
+		</div>
+		{% endif %}
+	    <div>
+	      	<input type="submit" value="Acceder"/>
+	      	<input type="hidden" name="next" value="{{ next }}" />
+	    </div>
+	</fieldset>
+</form>
+</main> <!-- .cd-main-login-content -->
+{%endblock%}

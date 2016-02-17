@@ -1,0 +1,314 @@
+/* -------------------------------- 
+
+Nucleo Outline Web Font - nucleoapp.com/
+License - nucleoapp.com/license/
+Created using IcoMoon - icomoon.io
+
+-------------------------------- */
+@font-face {
+  font-family: 'Nucleo Outline';
+  src: url('../fonts/nucleo-outline.eot');
+  src: url('../fonts/nucleo-outline.eot') format('embedded-opentype'), url('../fonts/nucleo-outline.woff2') format('woff2'), url('../fonts/nucleo-outline.woff') format('woff'), url('../fonts/nucleo-outline.ttf') format('truetype'), url('../fonts/nucleo-outline.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------
+	base class definition
+-------------------------*/
+.nc-icon-outline {
+  display: inline-block;
+  font: normal normal normal 14px/1 'Nucleo Outline';
+  font-size: inherit;
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*------------------------
+  change icon size
+-------------------------*/
+.nc-icon-outline.lg {
+  font-size: 1.33333333em;
+  vertical-align: -16%;
+}
+.nc-icon-outline.x2 {
+  font-size: 2em;
+}
+.nc-icon-outline.x3 {
+  font-size: 3em;
+}
+/*----------------------------------
+  add a square/circle background
+-----------------------------------*/
+.nc-icon-outline.square,
+.nc-icon-outline.circle {
+  padding: 0.33333333em;
+  vertical-align: -16%;
+  background-color: #eeeeee;
+}
+.nc-icon-outline.circle {
+  border-radius: 50%;
+}
+/*------------------------
+  list icons
+-------------------------*/
+.nc-icon-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+.nc-icon-ul > li {
+  position: relative;
+}
+.nc-icon-ul > li > .nc-icon-outline {
+  position: absolute;
+  left: -1.57142857em;
+  top: 0.14285714em;
+  text-align: center;
+}
+.nc-icon-ul > li > .nc-icon-outline.lg {
+  top: 0;
+  left: -1.35714286em;
+}
+.nc-icon-ul > li > .nc-icon-outline.circle,
+.nc-icon-ul > li > .nc-icon-outline.square {
+  top: -0.19047619em;
+  left: -1.9047619em;
+}
+/*------------------------
+  spinning icons
+-------------------------*/
+.nc-icon-outline.spin {
+  -webkit-animation: nc-icon-spin 2s infinite linear;
+  -moz-animation: nc-icon-spin 2s infinite linear;
+  animation: nc-icon-spin 2s infinite linear;
+}
+@-webkit-keyframes nc-icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes nc-icon-spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@keyframes nc-icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*------------------------
+  rotated/flipped icons
+-------------------------*/
+.nc-icon-outline.rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.nc-icon-outline.rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.nc-icon-outline.rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.nc-icon-outline.flip-y {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.nc-icon-outline.flip-x {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+/*------------------------
+	font icons
+-------------------------*/
+.nc-icon-outline.air-baloon:before {
+  content: "\e600";
+}
+.nc-icon-outline.album:before {
+  content: "\e601";
+}
+.nc-icon-outline.banana:before {
+  content: "\e602";
+}
+.nc-icon-outline.bear:before {
+  content: "\e603";
+}
+.nc-icon-outline.beer:before {
+  content: "\e604";
+}
+.nc-icon-outline.board:before {
+  content: "\e605";
+}
+.nc-icon-outline.bookmark-add:before {
+  content: "\e606";
+}
+.nc-icon-outline.bookmark-remove:before {
+  content: "\e607";
+}
+.nc-icon-outline.bookmark:before {
+  content: "\e608";
+}
+.nc-icon-outline.cake:before {
+  content: "\e609";
+}
+.nc-icon-outline.cart-add:before {
+  content: "\e60a";
+}
+.nc-icon-outline.cart:before {
+  content: "\e60b";
+}
+.nc-icon-outline.chat:before {
+  content: "\e60c";
+}
+.nc-icon-outline.cloud:before {
+  content: "\e60d";
+}
+.nc-icon-outline.coffee:before {
+  content: "\e60e";
+}
+.nc-icon-outline.controller:before {
+  content: "\e60f";
+}
+.nc-icon-outline.diamond:before {
+  content: "\e610";
+}
+.nc-icon-outline.dislike:before {
+  content: "\e611";
+}
+.nc-icon-outline.evil:before {
+  content: "\e612";
+}
+.nc-icon-outline.eye-ban:before {
+  content: "\e613";
+}
+.nc-icon-outline.eye:before {
+  content: "\e614";
+}
+.nc-icon-outline.flight:before {
+  content: "\e615";
+}
+.nc-icon-outline.headphones:before {
+  content: "\e616";
+}
+.nc-icon-outline.heart:before {
+  content: "\e617";
+}
+.nc-icon-outline.home:before {
+  content: "\e618";
+}
+.nc-icon-outline.image:before {
+  content: "\e619";
+}
+.nc-icon-outline.keyboard:before {
+  content: "\e61a";
+}
+.nc-icon-outline.laptop:before {
+  content: "\e61b";
+}
+.nc-icon-outline.like:before {
+  content: "\e61c";
+}
+.nc-icon-outline.money:before {
+  content: "\e61d";
+}
+.nc-icon-outline.moon-storm:before {
+  content: "\e61e";
+}
+.nc-icon-outline.moon:before {
+  content: "\e61f";
+}
+.nc-icon-outline.moto:before {
+  content: "\e620";
+}
+.nc-icon-outline.mouse:before {
+  content: "\e621";
+}
+.nc-icon-outline.pc:before {
+  content: "\e622";
+}
+.nc-icon-outline.pizza:before {
+  content: "\e623";
+}
+.nc-icon-outline.player:before {
+  content: "\e624";
+}
+.nc-icon-outline.print:before {
+  content: "\e625";
+}
+.nc-icon-outline.reflex:before {
+  content: "\e626";
+}
+.nc-icon-outline.robot:before {
+  content: "\e627";
+}
+.nc-icon-outline.shirt:before {
+  content: "\e628";
+}
+.nc-icon-outline.sign:before {
+  content: "\e629";
+}
+.nc-icon-outline.skull:before {
+  content: "\e62a";
+}
+.nc-icon-outline.suitcase:before {
+  content: "\e62b";
+}
+.nc-icon-outline.sun-cloud:before {
+  content: "\e62c";
+}
+.nc-icon-outline.sushi:before {
+  content: "\e62d";
+}
+.nc-icon-outline.taxi:before {
+  content: "\e62e";
+}
+.nc-icon-outline.vespa:before {
+  content: "\e62f";
+}
+.nc-icon-outline.wallet:before {
+  content: "\e630";
+}
+.nc-icon-outline.world:before {
+  content: "\e631";
+}

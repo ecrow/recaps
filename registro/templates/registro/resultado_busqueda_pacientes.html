@@ -1,0 +1,51 @@
+<h3 class="tituloDescripcion">Resultados de la búsqueda</h3>
+<hr/>
+<ul class="c-content-panel">
+{% for paciente in patients%}  
+<li>
+  <div class="row">
+    <div class="col-xs-12 col-md-5">
+      <h2 class="textoBusqueda">
+        <a href="{% url 'domicilio_paciente' paciente.id%}">{{paciente.nombre}} {{paciente.apellido_paterno}} {{paciente.apellido_materno}}</a>
+      </h2>
+      <h3 class="etiquetaBusqueda">Nombre</h3>
+    </div>
+
+    <div class="col-xs-2 col-md-2">
+      <h2 class="textoBusqueda">{{paciente.edad|default:"No especificado"}}</h2>
+      <h3 class="etiquetaBusqueda">Edad</h3>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <h2 class="textoBusqueda">{{paciente.fecha_registro|date:"d-m-Y"}}</h2>
+      <h3 class="etiquetaBusqueda">Fecha de registro</h3>
+    </div>
+     <div class="col-xs-4 col-md-2">
+      <h2 class="textoBusqueda">{{paciente.unidad}}</h2>
+      <h3 class="etiquetaBusqueda">Unidad</h3>
+    </div>
+  </div>  
+</li>
+{% endfor %}
+</ul>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="blockpagination">
+      <ul class="pagination pagination-centered">
+        {% if patients.has_previous %}
+            <li><a href="?page=1"><i class="fa fa-angle-double-left"></i></a></li>
+            <li><a href="?page={{ maters.previous_page_number }}"><i class="fa fa-angle-left"></i></a></li>
+        {% endif %}
+
+        {% for i in paginator.page_range %}
+            <li {% if patients.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+        {% endfor %}
+
+        {% if patients.has_next %}
+            <li><a href="?page={{ patients.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
+            <li><a href="?page={{ patients.paginator.num_pages }}"><i class="fa fa-angle-double-right"></i></a></li>
+        {% endif %}
+    </ul>
+    </div>
+  </div>
+</div>

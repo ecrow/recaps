@@ -1,0 +1,34 @@
+{%for contrareferencia in contrareferencias%}
+<div class="titulo_elemento" id="titulo_elemento_{{contrareferencia.id}}">
+		<a data-toggle="collapse" href="#elemento_{{contrareferencia.id}}">
+			{{contrareferencia.fecha_envio|date:"d-M-Y"}}
+		</a>
+		<span class="acciones">
+			<a id="borra_{{contrareferencia.id}}" href="#" data-menu="delete" data-undo="#undo_{{contrareferencia.id}}" data-confirma="#confirma_{{contrareferencia.id}}" data-titulo="#titulo_elemento_{{contrareferencia.id}}"><i class="fa fa-trash"></i></a>
+			<a id="confirma_{{contrareferencia.id}}" href="#" data-id="{{contrareferencia.id}}" data-menu="confirm" class="hidden"><i class="fa fa-check"></i></a>
+			<a id="undo_{{contrareferencia.id}}" href="#" data-confirma="#confirma_{{contrareferencia.id}}" data-titulo="#titulo_elemento_{{contrareferencia.id}}" data-borra="#borra_{{contrareferencia.id}}" data-menu="undo" class="hidden"><i class="fa fa-undo"></i></a>
+		</span>
+	<div class="elemento collapse" id="elemento_{{contrareferencia.id}}">
+	<div class="row">
+		<div class="col-md-4">
+			<h2 class="textoField">{{contrareferencia.fecha_envio|date:"d-M-Y"}}</h2>
+			<h3 class="etiqueta">Fecha de Envio</h3>
+		</div>
+		<div class="col-md-4">
+			<h2 class="textoField">{{contrareferencia.unidad_contrarefiere}}</h2>
+			<h3 class="etiqueta">Unidad que envia</h3>
+		</div>
+		<div class="col-md-4">
+			<h2 class="textoField">{{contrareferencia.unidad_recibe}}</h2>
+			<h3 class="etiqueta">Unidad que recibe</h3>
+		</div>	
+	</div>
+	<div class="row ">
+		<div class="col-md-12">
+			<h2 class="textoField">{{contrareferencia.observaciones}}</h2>
+			<h3 class="etiqueta">Observaciones</h3>
+		</div>
+	</div>
+	</div>
+</div>
+{%endfor%}
