@@ -19,17 +19,20 @@
 		{% endif %}
 		</div>
 		<div class="icon">
-			<label class="cd-label" for="cd-name">Usuario</label>
+			<label class="cd-label-login" for="cd-name">Usuario</label>
 			{{ form.username }}
 	    </div> 
 
 	    <div class="icon">
-	    	<label class="cd-label" for="cd-password">Contraseña</label>
+	    	<label class="cd-label-login" for="cd-password">Contraseña</label>
 			{{ form.password }}
 	    </div>
 	    {% if form.errors %}
 	    <div class="error-message">
-			<p>Su usuario y contraseña son erroneos. Por favor intente de nuevo</p>
+			<p> 
+				<i class="fa fa-info-circle"></i>
+				Sus datos de acceso son erroneos. Por favor intente de nuevo
+			</p>
 		</div>
 		{% endif %}
 	    <div>

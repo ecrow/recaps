@@ -33,6 +33,8 @@ urlpatterns = [
     url(r'^catalogo/tipo_tratamiento/$',views.catalogo_tipo_tratamiento),
     url(r'^catalogo/resultado/$',views.catalogo_resultado),
     url(r'^catalogo/unidad/$',views.catalogo_unidad),
+    url(r'^catalogo/cs/$',views.catalogo_cs),
+    url(r'^catalogo/hosp/$',views.catalogo_hosp),
 
     url(r'^calcula/sg/$',views.calcula_sg),
     url(r'^calcula/fum/$',views.calcula_fum),

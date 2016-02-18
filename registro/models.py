@@ -176,6 +176,17 @@ class Usuario_Unidad(models.Model):
 	status=models.CharField(max_length=1,choices=status,default='A')
 
 
+class Unidad_Asignacion(models.Model):
+	envia = models.ForeignKey(Unidad, related_name='envia')
+	recibe = models.ForeignKey(Unidad)
+	status=models.CharField(max_length=1,choices=status,default='A')
+	class Meta:
+		verbose_name_plural = 'Unidad_Asignaciones'
+
+	def __unicode__(self):
+		return u'{} -> {}'.format(self.envia.descripcion, self.recibe.descripcion)
+
+
 class Usuario_Perfil(models.Model):
 	usuario=models.OneToOneField(User)
 	apellido_materno=models.CharField(max_length=50)

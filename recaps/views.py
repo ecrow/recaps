@@ -10,6 +10,7 @@ from django.db.models import Q
 import datetime
 import operator
 
+
 @login_required
 def index(request):
 	return render(request,'index.html')
@@ -60,9 +61,10 @@ def catalogo_tipo_tamizaje(request):
 @login_required
 def catalogo_unidad(request):
 
-	if request.user.is_staff or  request.user.groups.filter(name='hospitales').exists() or request.user.groups.filter(name='supervisores').exists():
-
-		unidades = 	Unidad.objects.filter(status='A')	
+	if request.user.is_staff or request.user.groups.filter(name='supervisores').exists():
+		unidades = 	Unidad.objects.filter(status='A')
+	elif request.user.groups.filter(name='hospitales').exists():
+		unidades = 	Unidad.objects.filter(status='A',tipo_unidad_id=2)
 	else:
 		unidades = Unidad.objects.filter(status='A', usuario_unidad__usuario=request.user, usuario_unidad__status='A')
 		
@@ -73,6 +75,39 @@ def catalogo_unidad(request):
 			'descripcion':unidad.descripcion
 		})
 	return JsonResponse(lista_unidad,safe=False)
+
+
+@login_required
+def catalogo_cs(request):
+
+	usuario = request.user
+	unidades = unidades_cs(usuario)
+
+	
+	lista_unidad = []
+	for unidad in unidades:
+		lista_unidad.append({
+			'unidad_id':unidad.id,
+			'descripcion':unidad.descripcion
+		})
+	return JsonResponse(lista_unidad,safe=False)
+
+@login_required
+def catalogo_hosp(request):
+
+	usuario = request.user
+
+	unidades = unidades_hosp(usuario)
+
+	lista_unidad = []
+	for unidad in unidades:
+		lista_unidad.append({
+			'unidad_id':unidad.id,
+			'descripcion':unidad.descripcion
+		})
+	return JsonResponse(lista_unidad,safe=False)
+
+
 
 @login_required
 def catalogo_tipo_tratamiento(request):
@@ -161,6 +196,9 @@ def busqueda_js_tamizaje(request):
 			if query_strings:
 				predicados=[]
 
+				usuario = request.user
+				unidades = unidades_hosp(usuario)
+
 				fecha_inicial=request.GET['fecha_ini']
 				fecha_final=request.GET['fecha_fin']
 
@@ -200,7 +238,7 @@ def busqueda_js_tamizaje(request):
 						predicados.append(('tipo_tratamiento__id',tratamiento))
 
 				q_list = [Q(x) for x in predicados]
-				tamizajes=Tamizaje.objects.filter(reduce(operator.and_, q_list))
+				tamizajes=Tamizaje.objects.filter(reduce(operator.and_, q_list),unidad_realiza__in=unidades,status='A')
 
 				
 				for tamizaje in tamizajes:
@@ -230,6 +268,9 @@ def busqueda_js_pacientes(request):
 			if query_strings:
 				predicados=[]
 
+				usuario = request.user
+				unidades = unidades_cs(usuario)
+
 				if 'valor_range' in request.GET.keys():
 					valor_range = request.GET['valor_range']
 					if valor_range:
@@ -243,9 +284,9 @@ def busqueda_js_pacientes(request):
 
 				if predicados:
 					q_list = [Q(x) for x in predicados]
-					pacientes=Paciente.objects.filter(reduce(operator.and_, q_list))
+					pacientes=Paciente.objects.filter(reduce(operator.and_, q_list),unidad__in=unidades,status='A')
 				else:
-					pacientes=Paciente.objects.filter(status='A').order_by('-fecha_registro')
+					pacientes=Paciente.objects.filter(status='A',unidad__in=unidades).order_by('-fecha_registro')
 
 				domicilio_completo = ''
 				for paciente in pacientes:
@@ -283,6 +324,9 @@ def busqueda_js_referencia(request):
 			if query_strings:
 				predicados=[]
 
+				usuario = request.user
+				unidades = unidades_cs(usuario)
+
 				fecha_inicial=request.GET['fecha_ini']
 				fecha_final=request.GET['fecha_fin']
 
@@ -311,7 +355,7 @@ def busqueda_js_referencia(request):
 						predicados.append(('tipo_tamizaje__id',tipo_tamizaje))
 
 				q_list = [Q(x) for x in predicados]
-				referencias=Referencia.objects.filter(reduce(operator.and_, q_list))
+				referencias=Referencia.objects.filter(reduce(operator.and_, q_list),unidad_refiere__in=unidades,status='A')
 
 				
 				for referencia in referencias:
@@ -341,6 +385,9 @@ def busqueda_js_contrareferencia(request):
 			if query_strings:
 				predicados=[]
 
+				usuario = request.user
+				unidades = unidades_hosp(usuario)
+
 				fecha_inicial=request.GET['fecha_ini']
 				fecha_final=request.GET['fecha_fin']
 
@@ -365,7 +412,7 @@ def busqueda_js_contrareferencia(request):
 
 
 				q_list = [Q(x) for x in predicados]
-				contrareferencias=Contrareferencia.objects.filter(reduce(operator.and_, q_list))
+				contrareferencias=Contrareferencia.objects.filter(reduce(operator.and_, q_list),unidad_contrarefiere__in=unidades,status='A')
 
 				
 				for contrareferencia in contrareferencias:
@@ -424,3 +471,40 @@ def borra_contrareferencia(request, elemento_id):
 
 	return JsonResponse({'status':'0','msg' : 'BAD REQUEST'},safe=False)			
 
+
+
+
+def unidades_cs(usuario):
+	if usuario.is_staff or usuario.groups.filter(name='supervisores').exists():
+		unidades = 	Unidad.objects.filter(status='A',tipo_unidad_id=2)
+
+	elif usuario.groups.filter(name='cs').exists():
+		unidades = Unidad.objects.filter(status='A', usuario_unidad__usuario=usuario, usuario_unidad__status='A')
+
+	elif usuario.groups.filter(name='hospitales').exists():
+		unidades_usuario = Unidad.objects.filter(status='A', usuario_unidad__usuario=usuario, usuario_unidad__status='A')
+		unidades_recibe = [u.envia.id for u in Unidad_Asignacion.objects.filter(status='A',recibe__in=unidades_usuario)]
+		unidades = Unidad.objects.filter(status='A',pk__in=unidades_recibe)
+	else:
+		unidades = []
+
+	return unidades
+
+
+def unidades_hosp(usuario):
+	if usuario.is_staff or usuario.groups.filter(name='supervisores').exists():
+		unidades = 	Unidad.objects.filter(status='A',tipo_unidad_id=1)
+
+	elif usuario.groups.filter(name='cs').exists():
+
+		unidades_usuario = Unidad.objects.filter(status='A', usuario_unidad__usuario=usuario, usuario_unidad__status='A')
+		unidades_envia = [u.recibe.id for u in Unidad_Asignacion.objects.filter(status='A',envia__in=unidades_usuario)]
+		unidades = Unidad.objects.filter(status='A',pk__in=unidades_envia)
+	
+	elif usuario.groups.filter(name='hospitales').exists():
+		unidades = Unidad.objects.filter(status='A', usuario_unidad__usuario=usuario, usuario_unidad__status='A')
+
+	else:
+		unidades = []
+
+	return unidades

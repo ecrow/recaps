@@ -317,6 +317,24 @@ def busqueda_paciente(request):
 	try:
 		query_strings=request.GET.keys()
 		if query_strings:
+
+			#same query as unidades_cs
+			usuario = request.user
+
+			if usuario.is_staff or usuario.groups.filter(name='supervisores').exists():
+				unidades = 	Unidad.objects.filter(status='A',tipo_unidad_id=2)
+
+			elif usuario.groups.filter(name='cs').exists():
+				unidades = Unidad.objects.filter(status='A', usuario_unidad__usuario=request.user, usuario_unidad__status='A')
+
+			elif usuario.groups.filter(name='hospitales').exists():
+				unidades_usuario = Unidad.objects.filter(status='A', usuario_unidad__usuario=request.user, usuario_unidad__status='A')
+				unidades_recibe = [u.envia.id for u in Unidad_Asignacion.objects.filter(status='A',recibe__in=unidades_usuario)]
+				unidades = Unidad.objects.filter(status='A',pk__in=unidades_recibe)
+			else:
+				unidades =[]
+
+
 			page = request.GET.get('page')
 			predicados = []
 			if 'busqueda_paciente' in request.GET:
@@ -331,24 +349,24 @@ def busqueda_paciente(request):
 			if predicados:
 				request.session['predicados']= list(predicados)
 				q_list = [Q(x) for x in predicados]
-				pacientes = Paciente.objects.filter(reduce(operator.or_, q_list),status='A').order_by('-fecha_registro')
+				pacientes = Paciente.objects.filter(reduce(operator.or_, q_list),status='A',unidad__in=unidades).order_by('-fecha_registro')
 			else:
 				if 'predicados' in request.session:
 					predicados=request.session['predicados']
 					if predicados and page:
 						q_list = [Q(x) for x in predicados]
-						pacientes = Paciente.objects.filter(reduce(operator.or_, q_list),status='A').order_by('-fecha_registro')
+						pacientes = Paciente.objects.filter(reduce(operator.or_, q_list),status='A',unidad__in=unidades).order_by('-fecha_registro')
 					else:
 						del request.session['predicados']
-						pacientes=Paciente.objects.filter(status='A').order_by('-fecha_registro')
+						pacientes=Paciente.objects.filter(status='A',unidad__in=unidades).order_by('-fecha_registro')
 
 				else:
-					pacientes=Paciente.objects.filter(status='A').order_by('-fecha_registro')
+					pacientes=Paciente.objects.filter(status='A',unidad__in=unidades).order_by('-fecha_registro')
 		
 		else:
 			if 'predicados' in request.session:
 				del request.session['predicados']
-			pacientes=Paciente.objects.filter(status='A').order_by('-fecha_registro')
+			pacientes=Paciente.objects.filter(status='A',unidad__in=unidades).order_by('-fecha_registro')
 			page=1
 
 		paginator = Paginator(pacientes, 10)

@@ -11,7 +11,7 @@ $(document).ready(function() {
             transport: {
                 read: {
                     dataType: "json",
-                    url: "/catalogo/unidad/",
+                    url: "/catalogo/hosp/",
                 }
             }
         }

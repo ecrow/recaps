@@ -8,7 +8,7 @@ from .models import Referencia, Contrareferencia
 from .models import Tipo_Unidad, Unidad, Tipo_Tamizaje, Tipo_Tratamiento
 from .models import Estado, Municipio, Localidad
 from .models import Usuario_Unidad, Usuario_Perfil
-from .models import Resultado
+from .models import Resultado,Unidad_Asignacion
 
 
 
@@ -36,7 +36,9 @@ class PacienteAdmin(admin.ModelAdmin):
 	inlines = [ReferenciaInline]
 
 class UserAdmin(UserAdmin):
-    inlines = [Usuario_Perfil_Inline, Usuario_Unidad_Inline]
+	list_display=['username','first_name','last_name','email','is_staff','last_login','is_active']
+	ordering = ('-last_login',)
+	inlines = [Usuario_Perfil_Inline, Usuario_Unidad_Inline]
 
 
 
@@ -53,3 +55,4 @@ admin.site.register(Resultado)
 admin.site.register(Estado)
 admin.site.register(Municipio)
 admin.site.register(Localidad)
+admin.site.register(Unidad_Asignacion)

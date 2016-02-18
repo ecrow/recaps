@@ -828,7 +828,8 @@ Adiciones
   font-size: 3rem;
   font-weight: 500;
   color:#fff;
-  padding: 12px 0 0 40px;
+  padding: 0;
+  margin: 5px;
 }
 
 .fila{
@@ -843,7 +844,7 @@ Form
 .cd-form {
   width: 90%;
   max-width: 600px;
-  margin: 3.5em auto;
+  margin: 0.5em auto;
   padding: 10em 0;
 }
 .cd-form::after {
@@ -871,6 +872,14 @@ Form
   color: #94aab0;
   margin-bottom: 10px;
 }
+
+.cd-form .cd-label-login{
+  font-size: 2rem;
+  color: #94aab0;
+  margin-bottom: 10px; 
+  font-weight: 500;
+}
+
 .cd-form .cd-label {
   display: block;
 }
@@ -1090,7 +1099,7 @@ Form
 .cd-form .error-message p {
   background: #e94b35;
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1158,6 +1167,8 @@ Form
   .cd-form select {
     padding: 16px;
   }
+
+  
 }
 
 @-webkit-keyframes cd-bounce {
