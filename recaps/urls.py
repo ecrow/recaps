@@ -20,13 +20,12 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^$',views.index),
+    url(r'^registro/',include('registro.urls')),
+    url(r'^admin/', include(admin.site.urls)),
     url('^', include('django.contrib.auth.urls')),
     url(r'^logout_login/$', 'django.contrib.auth.views.logout_then_login'),
     
-    url(r'^registro/',include('registro.urls')),
-
     url(r'^catalogo/estado/$',views.catalogo_estado),
     url(r'^catalogo/municipio/$',views.catalogo_municipio),
     url(r'^catalogo/localidad/$',views.catalogo_localidad),
